@@ -3,7 +3,7 @@ const path = require('path');
 // requiring 3rd party modules
 const express = require('express');
 const bodyParser = require('body-parser');
-const body
+const axios = require('axios');
 
 //creating an express application
 const app = express();
@@ -25,16 +25,13 @@ app.post('/api/location', function (req, res) {
     // into a JS object from a JSON format using body-parser
     let location = req.body;
 
-    fetch(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${location.latitude},${location.longitude}`)
+    axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${location.latitude},${location.longitude}`)
         .then(function (response) {
-            return response.json()
-        }).then(function (weatherData) {
-            console.log(weatherData);
+            console.log(response.data.currently);
+            res.send(response.data.currently);
         }).catch(function (err) {
             console.log(err);
         });
-
-    res.send('Position coordinates received by the server');
 });
 
 //listener function to listen for HTTP requests

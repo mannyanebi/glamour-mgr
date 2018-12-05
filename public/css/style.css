@@ -15,11 +15,11 @@
 #weather-info{
     background-color: #0000006e;
     width: 300px;
-    height: 350px;
+    height: auto;
 }
 
 #bunny-reaction{
     background-color: #db74746e;
     width: 300px;
-    height: 350px;
+    height: auto;
 }
