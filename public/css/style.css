@@ -1,0 +1,25 @@
+#navbarTop{
+    background-color: #810000;
+}
+
+#navbarContent{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+}
+
+#weather-symbol{
+    width: 75px;
+    height: 75px;
+}
+
+#weather-info{
+    background-color: #0000006e;
+    width: 300px;
+    height: 350px;
+}
+
+#bunny-reaction{
+    background-color: #db74746e;
+    width: 300px;
+    height: 350px;
+}

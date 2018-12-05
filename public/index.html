@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>G&W Manager | Home</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top navigation bar -->
+    <nav class="navbar navbar-expand-sm navbar-light sticky-top" id="navbarTop">
+        <a href="#" class="navbar-brand text-light font-weight-bold">Glamour & Wardrobe Manager</a>
+        <button class="navbar-toggler bg-light" type="button" data-toggle= "collapse" data-target="#navbarContent" aria-controls="navbarTop" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="font-size:15px"></span>
+        </button>
+        <div class= "collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a href="#" class="nav-link text-light">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-light">Plan Your Journey</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Container for weather information -->
+    <div class="container">
+        <div class="row my-5" id="currentWeatherContainer">
+            <div class="col-md-6 col-sm-11 col-12" id="weather-info">
+                <div id="weather-symbol">
+
+                </div>
+                <h3 id="tempValue">oC</h3>
+
+            </div>
+            <div class="col-md-6 col-sm-11 col-12" id="bunny-reaction">
+                <h1>55</h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
