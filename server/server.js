@@ -21,17 +21,25 @@ app.use(express.static(PUBLICPATH));
 // handing a POST request by the client
 // responding using the weather information
 app.post('/api/location', function (req, res) {
-    // note that the body property of req is now parsed
-    // into a JS object from a JSON format using body-parser
-    let location = req.body;
-
-    axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${location.latitude},${location.longitude}`)
-        .then(function (response) {
-            console.log(response.data.currently);
-            res.send(response.data.currently);
-        }).catch(function (err) {
-            console.log(err);
-        });
+    res.send({
+        time: 1544094925,
+        summary: 'Sleeting Weather',
+        icon: 'sleet',
+        precipIntensity: 0,
+        precipProbability: 0,
+        temperature: 92.71,
+        apparentTemperature: 92.71,
+        dewPoint: 38.39,
+        humidity: 0.15,
+        pressure: 1010.15,
+        windSpeed: 14.55,
+        windGust: 19.21,
+        windBearing: 38,
+        cloudCover: 0.28,
+        uvIndex: 9,
+        visibility: 10,
+        ozone: 245.12
+    });
 });
 
 //listener function to listen for HTTP requests

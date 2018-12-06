@@ -35,69 +35,29 @@ function sendLocationToServer() {
         
         //callback to display response from server i.e. weather info to the user
         success:    function (response) { 
-            //creates a new img element
-            let weatherSymImg = document.createElement('img');
+            //This function creates a new img element 
             //decides what weather-symbol image to use based 
             //on the icon property from response
-            switch (response.icon) {
-                case 'partly-cloudy-night':
-                weatherSymImg.setAttribute('src', "../img/partly-cloudy-night.png");
-                weatherSymImg.setAttribute('width', "74px");
-                weatherSymImg.setAttribute('height', "74px");
-                break;
-                
-                case 'partly-cloudy-day':
-                weatherSymImg.setAttribute('src', "../img/partly-cloudy-day.jpg");
-                weatherSymImg.setAttribute('width', "74px");
-                weatherSymImg.setAttribute('height', "74px");
-                break;
-                
-                case 'clear-day':
-                weatherSymImg.setAttribute('src', "../img/clear-day.png");
-                weatherSymImg.setAttribute('width', "74px");
-                weatherSymImg.setAttribute('height', "74px");
-                break;
-                
-                case 'clear-night':
-                weatherSymImg.setAttribute('src', "../img/clear-night.png");
-                weatherSymImg.setAttribute('width', "74px");
-                weatherSymImg.setAttribute('height', "74px");
-                break;
-                
-                default:
-                weatherSymImg.setAttribute('src', "../img/noimage.png");
-                weatherSymImg.setAttribute('width', "74px");
-                weatherSymImg.setAttribute('height', "74px");
-                    break;
-            }
-            //appends the new img element to the div responsible for it
-            document.querySelector("#weather-symbol").appendChild(weatherSymImg);
+            requirejs(["helpers/weather-icon"], function (weatherIcon) {
+                setWeatherIcon(response.icon);
+            });
+            
+            //This function creates a new img element 
+            //decides what weather-card image to use based 
+            //on the icon property from response
+            requirejs(["helpers/weather-card"], function (weatherIcon) {
+                setWeatherCard(response.icon);
+            });
+            
             //setting to the temperature value of h4#tempValue to response.apparentTemperature
             document.querySelector("#tempValue").innerHTML = response.apparentTemperature;
             //setting to the temperature value of h4#tempSummary to response.apparentTemperature
             document.querySelector("#tempSummary").innerHTML = response.summary;
 
-            //setting weatherRelatedInfo
-            let weatherRelatedInfo = `
-            <tr>
-            <td>Cloud Cover</td>
-            <td>${response.cloudCover}</td>
-            </tr>
-            <tr>
-            <td>Humidity</td>
-            <td>${response.humidity}</td>
-            </tr>
-            <tr>
-            <td>Visibility</td>
-            <td>${response.visibility}</td>
-            </tr>
-            <tr>
-            <td>Wind Speed</td>
-            <td>${response.windSpeed}</td>
-            </tr>
-            `;
-            
-            document.querySelector("#weatherRelatedInfo").innerHTML = weatherRelatedInfo;
+            //This function sets weatherRelatedInfo
+            requirejs(["helpers/set-table-data"], function (weatherIcon) {
+                setTableData(response);
+            });
         },
         error:      function (err) {
             console.log(err);
@@ -109,6 +69,9 @@ function sendLocationToServer() {
     });
 }
 
+// this function is to execute only
+// when the document and its resources 
+// have been loaded successfully
 document.onreadystatechange = function () {
     if (document.readyState === "complete") {
         sendLocationToServer();
