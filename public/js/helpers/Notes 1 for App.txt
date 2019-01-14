@@ -1,0 +1,170 @@
+// function to get current user location using geolocation
+function getUserLocation() {
+    if("geolocation" in navigator){
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log(position.coords);
+            return new Promise(function (resolve, reject) {
+                resolve(position.coords); 
+            });
+        });
+    } else {
+        alert(`Your browser does not support geolocation!
+        Please update your browser`);
+    }
+}
+
+async function getLocationWeather() {
+    let userLocation = await getUserLocation();
+    console.log(userLocation);
+}
+
+document.onreadystatechange = function () {
+    if (document.readyState === "complete") {
+        getLocationWeather();
+    }
+};
+
+
+****************************************************************************************************************************
+
+
+// function to get current user location using geolocation
+// function getUserLocation() {
+//     if("geolocation" in navigator){
+//         navigator.geolocation.getCurrentPosition(function (position) {
+//             console.log(position);
+//         });         
+//     }
+//     else {
+//         alert(`Your browser does not support geolocation!
+//         Please update your browser`);
+//     }
+// }
+
+function getUserLocation() {
+    if("geolocation" in navigator){
+        return new Promise(function (resolve, reject) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                resolve({
+                    longitude:position.coords.latitude, 
+                    latitude: position.coords.longitude
+                }); 
+            });
+        });
+    } else {
+        alert(`Your browser does not support geolocation!
+        Please update your browser`);
+    }
+}
+
+function sendLocationToServer() {
+   let userLocation = getUserLocation();
+   userLocation.then(function (position) {
+    jQuery.ajax({
+        type: "POST",
+        url: "/api/location",
+        data: {
+            longitude: position.longitude,
+            latitude: position.latitude
+        },
+        success:    function (response) {
+            console.log(response);
+        },
+        error:      function (err) {
+            console.log(err)
+        }
+        });
+    });
+}
+
+// // getting the weather information from user's location
+// async function getLocationWeather() {
+//     let userLocation = await getUserLocation();
+//     fetch(`https://api.darksky.net/`).then(function(response){
+//             return response;
+//     }).then(function (weatherData) {
+//             console.log();
+//     }).catch(function (err) {
+//         console.log(err);
+//     });
+// }
+
+document.onreadystatechange = function () {
+    if (document.readyState === "complete") {
+        sendLocationToServer();
+    }
+};
+***************************************************************
+
+// note that the body property of req is now parsed
+    // into a JS object from a JSON format using body-parser
+    let location = req.body;
+    console.log('Fetching your weather location');
+    axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${location.latitude},${location.longitude}`)
+        .then(function (response) {
+            // console.log(response.data.currently);
+            // res.send(response.data.currently);
+            
+        }).catch(function (err) {
+            console.log(err);
+        });
+
+##################################################################################
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>G&W Manager | Home</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top navigation bar -->
+    <nav class="navbar navbar-expand-sm navbar-light sticky-top" id="navbarTop">
+        <a href="#" class="navbar-brand text-light font-weight-bold">Glamour & Wardrobe Manager</a>
+        <button class="navbar-toggler bg-light" type="button" data-toggle= "collapse" data-target="#navbarContent" aria-controls="navbarTop" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="font-size:15px"></span>
+        </button>
+        <div class= "collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a href="#" class="nav-link text-light">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-light">Plan Your Journey</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Container for weather information -->
+    <div class="container">
+        <div class="row my-5" id="currentWeatherContainer">
+            <div class="col-md-6 col-sm-11 col-12" id="weather-info">
+                <div id="weather-symbol" class="my-1">
+
+                </div>
+                <h4 id="tempValue">oC</h4>
+                <h3 id="tempSummary">Partly Rainy</h3>
+
+                <table class="table table-striped table-dark" id="weatherRelatedInfo">
+                    
+                </table>
+
+            </div>
+            <div class="col-md-6 col-sm-11 col-12 p-3" id="bunny-reaction">
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Using requirejs to add require other js files to index.js -->
+    <!-- <script src="js/index.js"></script> -->
+    <script data-main="js/index" src="js/require.js"></script>
+</body>
+</html>

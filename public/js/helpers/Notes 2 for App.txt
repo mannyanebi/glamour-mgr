@@ -1,0 +1,7 @@
+Image resources
+- Clothes suitable to each type of weather at this current time
+    Clothes are to be for men and women
+
+For Journey schedule
+- Use clothes suitable for each day and specify them according 
+ to each day like, Monday - Cardigan, Tuesday, Light Clothes and Gown etc

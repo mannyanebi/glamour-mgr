@@ -28,24 +28,27 @@
     </nav>
 
     <!-- Container for weather information -->
-    <div class="container">
-        <div class="row my-5" id="currentWeatherContainer">
-            <div class="col-md-6 col-sm-11 col-12" id="weather-info">
-                <div id="weather-symbol" class="my-1">
+    <div id="weatherContainer" class="container">
+        <h5 id="fetch-task" class="my-2">Fetching your current location weather information...</h5>
+            <img class="col-md-d col-sm-11 col-12" id="loading-screen" src="./img/loading-screen.gif" alt="loading your current location weather information">
+        
+            <div class="row my-5" id="currentWeatherContainer">
+                <div class="col-md-6 col-sm-11 col-12" id="weather-info">
+                    <div id="weather-symbol" class="my-1">
+
+                    </div>
+                    <h4 id="tempValue"></h4>
+                    <h3 id="tempSummary"></h3>
+
+                    <table class="table table-striped table-dark" id="weatherRelatedInfo">
+                        
+                    </table>
 
                 </div>
-                <h4 id="tempValue">oC</h4>
-                <h3 id="tempSummary">Partly Rainy</h3>
-
-                <table class="table table-striped table-dark" id="weatherRelatedInfo">
+                <div class="col-md-6 col-sm-11 col-12 p-3" id="bunny-reaction">
                     
-                </table>
-
+                </div>
             </div>
-            <div class="col-md-6 col-sm-11 col-12 p-3" id="bunny-reaction">
-                
-            </div>
-        </div>
     </div>
 
     <script src="libs/jquery.min.js"></script>

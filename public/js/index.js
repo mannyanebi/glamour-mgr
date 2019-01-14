@@ -4,6 +4,7 @@ function getUserLocation() {
         //return positional coordinates of user as a promise
         return new Promise(function (resolve, reject) {
                 navigator.geolocation.getCurrentPosition(function (position) {
+                    console.log(position);
                 resolve({
                     longitude:position.coords.latitude, 
                     latitude: position.coords.longitude
@@ -35,6 +36,15 @@ function sendLocationToServer() {
         
         //callback to display response from server i.e. weather info to the user
         success:    function (response) { 
+            // This function is to remove previous html elements on home screen
+            // so that they can be replaced with new html elements 
+            requirejs(["helpers/remove-load-screen"]);
+            console.log('Removed Load Screen');
+
+            // // This function creates new elements that should be filled with 
+            // // contents from the weather API
+            // requirejs(["helpers/create-weather-container"]);
+            
             //This function creates a new img element 
             //decides what weather-symbol image to use based 
             //on the icon property from response
