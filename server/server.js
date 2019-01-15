@@ -8,7 +8,7 @@ const axios = require('axios');
 //creating an express application
 const app = express();
 const PUBLICPATH = path.join(__dirname, '../public');
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // using the body-parser middle to parse
 // req.body objects to a JSON
