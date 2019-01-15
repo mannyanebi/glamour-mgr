@@ -68,6 +68,20 @@ function sendLocationToServer() {
             requirejs(["helpers/set-table-data"], function (weatherIcon) {
                 setTableData(response);
             });
+
+            //This function creates a new img element 
+            //decides what male-dress image to use based 
+            //on the icon property from response
+            requirejs(["helpers/set-male-dress"], function (weatherIcon) {
+                setMaleDress(response.icon);
+            });
+            
+            //This function creates a new img element 
+            //decides what female-dress image to use based 
+            //on the icon property from response
+            requirejs(["helpers/set-female-dress"], function (weatherIcon) {
+                setFemaleDress(response.icon);
+            });
         },
         error:      function (err) {
             console.log(err);
