@@ -32,3 +32,14 @@ body{
 #currentWeatherContainer{
     visibility: hidden;
 }
+
+#loading-screen{
+    width: fit-content;
+    height: fit-content;
+}
+
+.avatar-img{
+    display: block;
+    width: 25px;
+    height: 25px;
+}

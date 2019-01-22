@@ -1,7 +1,7 @@
 //gets the parent div that contains the loading screen and fetch-task header. 
 let weather_container = document.querySelector('#weatherContainer');
 let loadScreen = document.querySelector('#loading-screen');
-let fetchTask = document.querySelector('#fetch-task');
+let fetchTask = document.querySelector('#fetch-task-container');
 weather_container.removeChild(loadScreen);
 weather_container.removeChild(fetchTask);
 

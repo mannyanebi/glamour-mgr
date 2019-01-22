@@ -5,3 +5,8 @@ Image resources
 For Journey schedule
 - Use clothes suitable for each day and specify them according 
  to each day like, Monday - Cardigan, Tuesday, Light Clothes and Gown etc
+
+
+Heroku App link
+- https://sleepy-anchorage-16324.herokuapp.com/ - Glamour Mgr
+- https://stark-waters-92421.herokuapp.com/ - Chat App 

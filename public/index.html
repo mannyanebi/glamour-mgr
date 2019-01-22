@@ -29,8 +29,10 @@
 
     <!-- Container for weather information -->
     <div id="weatherContainer" class="container">
-        <h5 id="fetch-task" class="my-2">Fetching your current location weather information...</h5>
-            <img class="col-md-d col-sm-11 col-12" id="loading-screen" src="./img/loading-screen.gif" alt="loading your current location weather information">
+            <div class="bg-dark text-light px-2 py-1" id="fetch-task-container">
+                <h5 id="fetch-task" class="my-2">Fetching your current location weather information...</h5>
+            </div>
+            <img class="col-md-d col-sm-11 col-12" id="loading-screen" src="./img/loading-screen.gif" alt="loading spinner">
         
             <div class="row my-5" id="currentWeatherContainer">
                 <div class="col-md-6 col-sm-11 col-12" id="weather-info">
@@ -53,17 +55,30 @@
 
     <!-- Container for WYSBW (What You Should be Wearing)-->
     <div id="wysbw-container" class="container" style="display:none">
-        <h5 id="wysbw-advice" class="my-2">This is what we advice you should be wearing</h5>
-            <div class="row my-5" id="dresses-container">
-                <!-- This div holds what dress a male user should be wearing -->
-                <div class="col-md-6 col-sm-11 col-12" id="male-dress">
-                    <!-- <img id="male-dress-img" src="" alt="For Male User"> -->
-                </div>
-                <!-- This div holds what dress a female user should be wearing -->
-                <div class="col-md-6 col-sm-11 col-12 p-3" id="female-dress">
-                    <!-- <img id="female-dress-img" src="" alt="For Female User"> -->
-                </div>
+        <div class="bg-dark text-light px-2 py-1" id="wysbw-advice-container">
+            <h5 id="wysbw-advice" class="my-2">This is what we advice you should be wearing</h5>
+            <div class="mx-auto">
             </div>
+        </div>
+        
+        <div class="row my-5" id="dresses-container">
+            <!-- This div holds what dress a male user should be wearing -->
+            <div class="col-md-6 col-sm-11 col-12 my-1" id="male-dress">
+                <div class="mx-auto">
+                    <img class="avatar-img" style="display:inline" src="./img/male-avartar.png" alt="male-avatar">
+                    <span style="display:inline"><b>Male</b></span>
+                </div>
+                <!-- <img id="male-dress-img" src="" alt="For Male User"> -->
+            </div>
+            <!-- This div holds what dress a female user should be wearing -->
+            <div class="col-md-6 col-sm-11 col-12 p-3 my-1" id="female-dress">
+                <div class="mx-auto">
+                    <img class="avatar-img" style="display:inline" src="./img/female-avartar.png" alt="female-avatar">
+                    <span style="display:inline"><b>Female</b></span>
+                </div>
+                <!-- <img id="female-dress-img" src="" alt="For Female User"> -->
+            </div>
+        </div>
     </div>
 
     <script src="libs/jquery.min.js"></script>

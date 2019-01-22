@@ -1,6 +1,7 @@
 function setMaleDress(weatherSummary) {
     let male_dress_img = document.createElement('img');
 
+
     // This sets the wysbw container to block so that contents can be added to it
     let wysbwContainer = document.querySelector('#wysbw-container');
     wysbwContainer.setAttribute('style', 'display: block');
@@ -75,5 +76,6 @@ function setMaleDress(weatherSummary) {
         male_dress_img.setAttribute('height', "100%");
         break;
     }
+    male_dress_img.className = 'mx-auto';
     document.querySelector("#male-dress").appendChild(male_dress_img);
 }

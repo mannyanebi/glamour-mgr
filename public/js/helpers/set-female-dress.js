@@ -71,5 +71,6 @@ function setFemaleDress(weatherSummary) {
         female_dress_img.setAttribute('height', "100%");
         break;
     }
+    female_dress_img.className = 'mx-auto';
     document.querySelector("#female-dress").appendChild(female_dress_img);
 }
