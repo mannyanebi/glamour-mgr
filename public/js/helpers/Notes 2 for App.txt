@@ -5,7 +5,9 @@ Image resources
 For Journey schedule
 - Use clothes suitable for each day and specify them according 
  to each day like, Monday - Cardigan, Tuesday, Light Clothes and Gown etc
-
+    How to implement:-
+    - Let user input his destination city, or village, 
+    - Then geolocation that destination and retrieve coordinates, both lat and long
 
 Heroku App link
 - https://sleepy-anchorage-16324.herokuapp.com/ - Glamour Mgr
