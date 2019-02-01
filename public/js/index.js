@@ -1,6 +1,10 @@
 // function to get current user location using geolocation
 function getUserLocation() {
-    if("geolocation" in navigator){
+    if(navigator.geolocation){
+        let position_options = {
+            timeout: 10000,
+            minimumAge: 0
+        };
         //return positional coordinates of user as a promise
         return new Promise(function (resolve, reject) {
                 navigator.geolocation.getCurrentPosition(function (position) {
@@ -9,7 +13,12 @@ function getUserLocation() {
                     longitude:position.coords.latitude, 
                     latitude: position.coords.longitude
                 }); 
-            });
+            }, function (error) {
+                //if error occurs while retrieving user's location
+
+                document.querySelector('#fetch-task').textContent = `Could not fetch your location data || 
+                Please allow clear this site settings and ALLOW location access || Check your Network connection`;
+            }, position_options);
         });
     } else {
         //error if user's browser does not support geolocation
