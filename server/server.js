@@ -44,7 +44,7 @@ app.post('/api/location', function (req, res) {
     // into a JS object from a JSON format using body-parser
     let location = req.body;
     console.log('Fetching your weather location');
-    axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${location.latitude},${location.longitude}`)
+    axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${location.latitude},${location.longitude}?exclude=hourly,daily,flags`)
         .then(function (response) {
             // console.log(response.data.currently);
             res.send(response.data.currently);
@@ -52,6 +52,32 @@ app.post('/api/location', function (req, res) {
             console.log(err);
         });
 });
+
+app.post('/api/address', function (req, res) {
+     // note that the body property of req is now parsed
+    // into a JS object from a JSON format using body-parser
+    let address = req.body.address;
+    let datetime = req.body.datetime + ":00";
+    
+    console.log('address:', address);
+    console.log('Fetching your address positional coordinates');
+    axios.get(`https://geocoder.api.here.com/6.2/geocode.json?app_id=KVuwMjndNDZxztDGks8Z&app_code=BFTTB1Hlw9eKyNw4zWve6Q&searchtext=${address}`)
+        .then(function (response) {
+            console.log('Got response from geocoder, fetching location weather information');
+            return response.data.Response.View[0].Result[0].Location.DisplayPosition;
+        }).then(function (coordinates) {
+            console.log(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime}?exclude=hourly,currently,flags`)
+            return axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime}?exclude=hourly,currently,flags`)
+        })
+        .then(function (weather_response) {
+            console.log(JSON.stringify(weather_response.data.daily.data[0].temperatureMax, null, 2));
+            res.send(JSON.stringify(weather_response.data.daily.data[0].temperatureMax, null, 2));
+         })
+        .catch(function (err) {
+            res.send(err);
+        });
+});
+
 
 //listener function to listen for HTTP requests
 app.listen(PORT, function () {

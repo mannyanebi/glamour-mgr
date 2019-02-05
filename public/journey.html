@@ -35,10 +35,16 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text">Destination</div>
                 </div>
-                <input type="email" name="" id="search-destination" class="form-control" placeholder="enter your destination city|town|village">
+                <input type="text" name="" id="search-destination" class="form-control" placeholder="Journey destination">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">Date</div>
+                </div>
+                <input type="datetime-local" name="" id="journey-datetime" class="form-control" value="2000-01-01T06:00:00">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Search</button>
+        <button type="button" id="search-btn" class="btn btn-primary mb-2">Search</button>
     </form>
 
     <!-- Footer div to show creator name and identity -->
