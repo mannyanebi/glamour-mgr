@@ -98,7 +98,9 @@ function sendLocationToServer() {
         });
         // console.log(position);
     }).catch(function (err) {
-        console.log(err);
+        // console.log(err);
+        document.querySelector('#fetch-task').textContent = `Could not fetch your location data`;
+        document.querySelector('#fetch-task').style.color = "Tomato";
     });
 }
 
