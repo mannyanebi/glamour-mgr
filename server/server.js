@@ -58,7 +58,8 @@ app.post('/api/address', function (req, res) {
     // into a JS object from a JSON format using body-parser
     let address = req.body.address;
     //concatenates the ss parameter needed for the [time] parameter
-    let datetime = req.body.datetime + ":00";
+    let datetime = req.body.datetime;
+    console.log(datetime);
     
     //2019-02-06T06:00:00
     //Geocoding user's address to get positional coordinates
@@ -69,15 +70,48 @@ app.post('/api/address', function (req, res) {
             //returns the positional coordinates for the next then call to make a GET request
             return response.data.Response.View[0].Result[0].Location.DisplayPosition;
         }).then(function (coordinates) {
-            console.log(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime}?exclude=hourly,currently,flags`)
-            //makes a GET request with the positional request to darksky api and then returns the result to the next then call
-            return axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime}?exclude=hourly,currently,flags`)
+            //make 7 GET requests with the positional request to darksky api and then returns the result to the next then call
+            let day1 = axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime[0]}?exclude=hourly,currently,flags`);
+            let day2 = axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime[1]}?exclude=hourly,currently,flags`);
+            let day3 = axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime[2]}?exclude=hourly,currently,flags`);
+            let day4 = axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime[3]}?exclude=hourly,currently,flags`);
+            let day5 = axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime[4]}?exclude=hourly,currently,flags`);
+            let day6 = axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime[5]}?exclude=hourly,currently,flags`);
+            let day7 = axios.get(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime[6]}?exclude=hourly,currently,flags`);
+
+            console.log(`https://api.darksky.net/forecast/01f9e6361372fc3b78310e171d41181a/${coordinates.Latitude},${coordinates.Longitude},${datetime[6]}?exclude=hourly,currently,flags`)
+
+            Promise.all([day1, day2, day3, day4, day5, day6, day7])
+            .then(function (weather_responses) {
+                //this collects all the respective weather information for each day and puts them into 
+                //weather_infos array
+                let weather_infos = [weather_responses[0].data.daily.data[0].icon, 
+                weather_responses[1].data.daily.data[0].icon,
+                weather_responses[2].data.daily.data[0].icon,
+                weather_responses[3].data.daily.data[0].icon,
+                weather_responses[4].data.daily.data[0].icon,
+                weather_responses[5].data.daily.data[0].icon,
+                weather_responses[6].data.daily.data[0].icon
+                ];
+
+                //this collects all the respective weather summary for each day and puts them into 
+                //weather_summary array
+                let weather_summaries = [weather_responses[0].data.daily.data[0].summary, 
+                weather_responses[1].data.daily.data[0].summary,
+                weather_responses[2].data.daily.data[0].summary,
+                weather_responses[3].data.daily.data[0].summary,
+                weather_responses[4].data.daily.data[0].summary,
+                weather_responses[5].data.daily.data[0].summary,
+                weather_responses[6].data.daily.data[0].summary
+                ];
+
+                //sends this response to the back to the client
+                res.send(JSON.stringify(weather_infos, null, 2));
+                //prints the weather_infos arrays
+                console.log(JSON.stringify(weather_infos, null, 2));
+                console.log(JSON.stringify(weather_summaries, null, 2));
+             });
         })
-        .then(function (weather_response) {
-            console.log(JSON.stringify(weather_response.data.daily.data[0].temperatureMax, null, 2));
-            //sends this response to the back to the client
-            res.send(JSON.stringify(weather_response.data.daily.data[0].temperatureMax, null, 2));
-         })
         .catch(function (err) {
             res.send(err);
         });
