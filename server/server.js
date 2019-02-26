@@ -136,8 +136,8 @@ app.post('/api/address', function (req, res) {
 
                 //sends this response to the back to the client
                 res.send({
-                    "weather summaries": weather_summaries,
-                    "weather infos": weather_infos
+                    "weather_summaries": weather_summaries,
+                    "weather_infos": weather_infos
                 });
                 //prints the weather_infos arrays
                 console.log(JSON.stringify(weather_infos, null, 2));

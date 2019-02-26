@@ -24,3 +24,11 @@ footer#doc-footer{
     width: 100%;
     bottom: 0px;
 }
+
+#dresses-for-days{
+    display: none;
+}
+
+#dresses-content{
+    visibility: hidden;
+}

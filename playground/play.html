@@ -4,11 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Play</title>
+    <title>Playground</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-    <h1 id="header">I am here to play</h1>
-    <button id="do">Make it happen</button>
-    <script data-main="js/main" src="js/require.js"></script>
+    <div class="container">
+        <nav id="tabbed-content-navs">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-day1-tab" data-toggle="tab" href="#day1-div" role="tab" aria-controls="day1-nav" aria-selected="true">1st|Day</a>
+                <a class="nav-item nav-link" id="nav-day2-tab" data-toggle="tab" href="#day2-div" role="tab" aria-controls="day2-nav" aria-selected="false">2nd|Day</a>
+                <a class="nav-item nav-link" id="nav-day3-tab" data-toggle="tab" href="#day3-div" role="tab" aria-controls="day3-nav" aria-selected="false">3rd|Day</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContents">
+            <div class="tab-pane fade show active" id="day1-div" role="tabpanel" aria-labelledby="nav-day1-tab">
+                <img src="img/clear-day/1.jpg" alt="Clear Day 1">
+            </div>
+            <div class="tab-pane fade" id="day2-div" role="tabpanel" aria-labelledby="nav-day2-tab">
+                <img src="img/clear-day/2.jpg" alt="Clear Day 2">
+            </div>
+            <div class="tab-pane fade" id="day3-div" role="tabpanel" aria-labelledby="nav-day3-tab">
+                <img src="img/clear-night/1.jpg" alt="Clear Night 1">
+            </div>
+        </div>
+    </div>
+
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+

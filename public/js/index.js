@@ -57,14 +57,14 @@ function sendLocationToServer() {
             //This function creates a new img element 
             //decides what weather-symbol image to use based 
             //on the icon property from response
-            requirejs(["helpers/weather-icon"], function (weatherIcon) {
-                setWeatherIcon(response.icon);
+            requirejs(["helpers/weather-icon"], function (weatherInfo) {
+                setweatherIcon(response.icon);
             });
             
             //This function creates a new img element 
             //decides what weather-card image to use based 
             //on the icon property from response
-            requirejs(["helpers/weather-card"], function (weatherIcon) {
+            requirejs(["helpers/weather-card"], function (weatherInfo) {
                 setWeatherCard(response.icon);
             });
             
@@ -74,21 +74,21 @@ function sendLocationToServer() {
             document.querySelector("#tempSummary").innerHTML = response.summary;
 
             //This function sets weatherRelatedInfo
-            requirejs(["helpers/set-table-data"], function (weatherIcon) {
+            requirejs(["helpers/set-table-data"], function (weatherInfo) {
                 setTableData(response);
             });
 
             //This function creates a new img element 
             //decides what male-dress image to use based 
             //on the icon property from response
-            requirejs(["helpers/set-male-dress"], function (weatherIcon) {
+            requirejs(["helpers/set-male-dress"], function (weatherInfo) {
                 setMaleDress(response.icon);
             });
             
             //This function creates a new img element 
             //decides what female-dress image to use based 
             //on the icon property from response
-            requirejs(["helpers/set-female-dress"], function (weatherIcon) {
+            requirejs(["helpers/set-female-dress"], function (weatherInfo) {
                 setFemaleDress(response.icon);
             });
         },

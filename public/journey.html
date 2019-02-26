@@ -47,6 +47,66 @@
         <button type="button" id="search-btn" class="btn btn-primary mb-2">Search</button>
     </form>
 
+        <div id="dress-content-container">
+            <nav id="tabbed-content-navs">
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-day1-tab" data-toggle="tab" href="#day1-div" role="tab" aria-controls="day1-nav" aria-selected="true">1st|Day</a>
+                        <a class="nav-item nav-link" id="nav-day2-tab" data-toggle="tab" href="#day2-div" role="tab" aria-controls="day2-nav" aria-selected="false">2nd|Day</a>
+                        <a class="nav-item nav-link" id="nav-day3-tab" data-toggle="tab" href="#day3-div" role="tab" aria-controls="day3-nav" aria-selected="false">3rd|Day</a>
+                        <a class="nav-item nav-link" id="nav-day4-tab" data-toggle="tab" href="#day4-div" role="tab" aria-controls="day4-nav" aria-selected="false">4th|Day</a>
+                        <a class="nav-item nav-link" id="nav-day5-tab" data-toggle="tab" href="#day5-div" role="tab" aria-controls="day5-nav" aria-selected="false">5th|Day</a>
+                        <a class="nav-item nav-link" id="nav-day6-tab" data-toggle="tab" href="#day6-div" role="tab" aria-controls="day6-nav" aria-selected="false">6th|Day</a>
+                        <a class="nav-item nav-link" id="nav-day7-tab" data-toggle="tab" href="#day7-div" role="tab" aria-controls="day7-nav" aria-selected="false">7th|Day</a>
+                    </div>
+                </nav>
+                <div id="dresses-for-days">
+                        <div class="tab-content" id="nav-tabContents">
+                                <div class="tab-pane fade show active" id="day1-div" role="tabpanel" aria-labelledby="nav-day1-tab">
+                                    
+                                    //this div below contains html elements for the right images
+                                    <div class="row my-5" id="dresses-container">
+                                            <!-- This div holds what dress a male user should be wearing -->
+                                            <div class="col-md-6 col-sm-11 col-12 my-1" id="male-dress-day1">
+                                                <div class="mx-auto">
+                                                    <img class="avatar-img" style="display:inline" src="./img/male-avartar.png" alt="male-avatar">
+                                                    <span style="display:inline"><b>Male</b></span>
+                                                </div>
+                                                <img src="./img/dresses/men/clear-night/1.jpg" alt="">
+                                                <!-- <img id="male-dress-img" src="" alt="For Male User"> -->
+                                            </div>
+                                            <!-- This div holds what dress a female user should be wearing -->
+                                            <div class="col-md-6 col-sm-11 col-12 p-3 my-1" id="female-dress-day1">
+                                                <div class="mx-auto">
+                                                    <img class="avatar-img" style="display:inline" src="./img/female-avartar.png" alt="female-avatar">
+                                                    <span style="display:inline"><b>Female</b></span>
+                                                </div>
+                                                <!-- <img id="female-dress-img" src="" alt="For Female User"> -->
+                                            </div>
+                                        </div> 
+                                </div>
+                                <div class="tab-pane fade" id="day2-div" role="tabpanel" aria-labelledby="nav-day2-tab">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="tab-pane fade" id="day3-div" role="tabpanel" aria-labelledby="nav-day3-tab">
+                                    <img src="./img/dresses/men/clear-night/1.jpg" alt="">
+                                </div>
+                                <div class="tab-pane fade" id="day4-div" role="tabpanel" aria-labelledby="nav-day4-tab">
+                                        <img src="" alt="">
+                                </div>
+                                <div class="tab-pane fade" id="day5-div" role="tabpanel" aria-labelledby="nav-day5-tab">
+                                        <img src="" alt="">
+                                </div>
+                                </div>
+                                <div class="tab-pane fade" id="day6-div" role="tabpanel" aria-labelledby="nav-day6-tab">
+                                        <img src="" alt="">
+                                </div>
+                                <div class="tab-pane fade" id="day7-div" role="tabpanel" aria-labelledby="nav-day7-tab">
+                                        <img src="" alt="">
+                                </div>
+                </div>
+        </div>
+                
+
     <!-- Footer div to show creator name and identity -->
     <footer id="doc-footer" class="bg-dark text-white p-3">
         <p class="text-center">&copy 2018<br> 
@@ -56,6 +116,9 @@
     <script src="libs/jquery.min.js"></script>
     <script src="libs/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/journey.js"></script>
+    <!-- Using requirejs to add require other js files to index.js -->
+    <!-- <script src="js/index.js"></script> -->
+    <script data-main="js/journey" src="js/require.js"></script>
+    <!-- <script src="js/journey.js"></script> -->
 </body>
 </html>

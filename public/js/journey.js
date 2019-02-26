@@ -59,7 +59,20 @@ function sendAddressToServer() {
         contentType: 'application/json',
 
         success: function (response) {
-            console.log('Success', response);
+            
+            //retrieving the weather info from response
+            let weatherInfo = response.weather_infos;
+            
+            //this sets the female dress for day1 according to
+            //weather info received from the server
+            requirejs(["helpers/days-logic/set-female-dress-day1.js"], function (weatherInfo) {
+                setFemaleDressDay1(weatherInfo[0]);
+            });
+            
+            // This function is to remove previous html elements on home screen
+            // so that they can be replaced with new html elements 
+            requirejs(["./helpers/days-logic/set-female-dress-day1"]);
+            console.log('Dresses Div - set as Block');
         },
 
         error: function (err) {
