@@ -1,11 +1,6 @@
 function setMaleDressDay1(weatherSummary) {
     let male_dress_img = document.createElement('img');
 
-
-    // This sets the wysbw container to block so that contents can be added to it
-    let wysbwContainer = document.querySelector('#wysbw-container');
-    wysbwContainer.setAttribute('style', 'display: block');
-
     // This creates a random number appends .jpg to make a random image file name
     let imageName = (Math.floor(Math.random() * 2) + 1).toString() + ".jpg";
     switch (weatherSummary) {

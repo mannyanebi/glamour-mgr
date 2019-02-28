@@ -19,7 +19,15 @@ function sendAddressToServer() {
         let month = daysArray.substring(5,7);
         let time = daysArray.substring(10);
         let day = Number(daysArray.substring(8,10)) + 1 + increment;
-        let date = new Date(("".concat(year,"-", month,"-", day, time)));
+        let date;
+        if (day < 10) {
+            //the '-0' is to add a 0 to the day so that days less than 10
+            //would have the 00 - 99 notation
+            date = new Date(("".concat(year,"-", month,"-0", day, time)));        
+        } else {
+            date = new Date(("".concat(year,"-", month,"-", day, time)));
+        }
+
         return (date);
     }
     //sets the first element of seven_days_ahead to date
@@ -46,7 +54,6 @@ function sendAddressToServer() {
         return String(new Date(strDate).toISOString()).substring(0,19) ;
     });
 
-    console.log(search_destination);
     let search_destinationOBJ = {
         address: search_destination,
         datetime: seven_days_ahead
@@ -59,20 +66,24 @@ function sendAddressToServer() {
         contentType: 'application/json',
 
         success: function (response) {
-            
             //retrieving the weather info from response
             let weatherInfo = response.weather_infos;
+
+            // This function is to remove previous html elements on home screen
+            // so that they can be replaced with new html elements 
+            requirejs(["./helpers/display-dresses-div"]);
             
             //this sets the female dress for day1 according to
             //weather info received from the server
-            requirejs(["helpers/days-logic/set-female-dress-day1.js"], function (weatherInfo) {
+            requirejs(["helpers/days-logic/set-male-dress-day1"], function (weather_info) {
+                setMaleDressDay1(weatherInfo[0]);
+            });
+            //this sets the female dress for day1 according to
+            //weather info received from the server
+            requirejs(["helpers/days-logic/set-female-dress-day1"], function (weather_info) {
                 setFemaleDressDay1(weatherInfo[0]);
             });
             
-            // This function is to remove previous html elements on home screen
-            // so that they can be replaced with new html elements 
-            requirejs(["./helpers/days-logic/set-female-dress-day1"]);
-            console.log('Dresses Div - set as Block');
         },
 
         error: function (err) {

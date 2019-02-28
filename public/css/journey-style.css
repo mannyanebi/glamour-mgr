@@ -17,18 +17,16 @@ body{
     font-size: 18px;
 }
 
-footer#doc-footer{
-    clear: both;
-    position: absolute;
-    height: auto;
-    width: 100%;
-    bottom: 0px;
-}
-
-#dresses-for-days{
-    display: none;
-}
-
-#dresses-content{
+div#dresses-content-container{
+    display: flex;
+    min-height: 56vh;
+    flex-direction: column;
+    justify-content: space-between;
     visibility: hidden;
+}
+
+.avatar-img{
+    display: block;
+    width: 25px;
+    height: 25px;
 }

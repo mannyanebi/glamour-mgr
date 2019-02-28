@@ -11,7 +11,15 @@ function incrementDay(daysArray, increment) {
     let month = daysArray.substring(5,7);
     let time = daysArray.substring(10);
     let day = Number(daysArray.substring(8,10)) + 1 + increment;
-    let date = new Date(("".concat(year,"-", month,"-", day, time)));
+    let date;
+    if (day < 10) {
+        //the '-0' is to add a 0 to the day so that days less than 10
+        //would have the 00 - 99 notation
+        date = new Date(("".concat(year,"-", month,"-0", day, time)));        
+    } else {
+        date = new Date(("".concat(year,"-", month,"-", day, time)));
+    }
+
     return (date);
 }
 //sets the first element of seven_days_ahead to date
