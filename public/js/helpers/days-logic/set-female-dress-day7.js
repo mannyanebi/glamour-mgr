@@ -1,4 +1,4 @@
-function setFemaleDressDay1(weatherSummary) {
+function setFemaleDressDay7(weatherSummary) {
     if (weatherSummary) {
         let female_dress_img = document.createElement('img');
 
@@ -72,8 +72,8 @@ function setFemaleDressDay1(weatherSummary) {
         female_dress_img.setAttribute('height', "90%");
         break;
     }
-    female_dress_img.className = 'mx-auto';
-    document.querySelector("#female-dress-day1").appendChild(female_dress_img); 
+        female_dress_img.className = 'mx-auto';
+        document.querySelector("#female-dress-day7").appendChild(female_dress_img);
 
     } else {
         //trying to replace avatar images with error message here
@@ -81,8 +81,7 @@ function setFemaleDressDay1(weatherSummary) {
         let errMsg =  document.createElement('h1');
         errMsg.textContent = "Oops! ...this day's weather information could not be retrieved from the server.";
         errMsg.className = 'text-center ml-3 py-4 text-danger';
-        document.querySelector("#female-dress-day1").setAttribute('style', 'display:none');
-        document.querySelector("#dresses-container-day1").appendChild(errMsg);   
+        document.querySelector("#female-dress-day7").setAttribute('style', 'display:none');
+        document.querySelector("#dresses-container-day7").appendChild(errMsg);
     }
-    
 }

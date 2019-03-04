@@ -67,21 +67,95 @@ function sendAddressToServer() {
 
         success: function (response) {
             //retrieving the weather info from response
-            let weatherInfo = response.weather_infos;
+            let weatherInfo = response.weather_info;
+            let weatherSummaryInfo = response.weather_summary_info;
 
             // This function is to remove previous html elements on home screen
             // so that they can be replaced with new html elements 
             requirejs(["./helpers/display-dresses-div"]);
             
-            //this sets the female dress for day1 according to
+            //this sets the male dress for day1 according to
             //weather info received from the server
+            //and sets the weather summary information for that particular day
             requirejs(["helpers/days-logic/set-male-dress-day1"], function (weather_info) {
-                setMaleDressDay1(weatherInfo[0]);
+                setMaleDressDay1(weatherInfo[0], weatherSummaryInfo[0]);
             });
             //this sets the female dress for day1 according to
             //weather info received from the server
             requirejs(["helpers/days-logic/set-female-dress-day1"], function (weather_info) {
                 setFemaleDressDay1(weatherInfo[0]);
+            });
+            
+            //this sets the male dress for day2 according to
+            //weather info received from the server
+            //and sets the weather summary information for that particular day
+            requirejs(["helpers/days-logic/set-male-dress-day2"], function (weather_info) {
+                setMaleDressDay2(weatherInfo[1], weatherSummaryInfo[1]);
+            });
+            //this sets the female dress for day1 according to
+            //weather info received from the server
+            requirejs(["helpers/days-logic/set-female-dress-day2"], function (weather_info) {
+                setFemaleDressDay2(weatherInfo[1]);
+            });
+            
+            //this sets the male dress for day3 according to
+            //weather info received from the server
+            //and sets the weather summary information for that particular day
+            requirejs(["helpers/days-logic/set-male-dress-day3"], function (weather_info) {
+                setMaleDressDay3(weatherInfo[2], weatherSummaryInfo[2]);
+            });
+            //this sets the female dress for day1 according to
+            //weather info received from the server
+            requirejs(["helpers/days-logic/set-female-dress-day3"], function (weather_info) {
+                setFemaleDressDay3(weatherInfo[2]);
+            });
+            
+            //this sets the male dress for day4 according to
+            //weather info received from the server
+            //and sets the weather summary information for that particular day
+            requirejs(["helpers/days-logic/set-male-dress-day4"], function (weather_info) {
+                setMaleDressDay4(weatherInfo[3], weatherSummaryInfo[3]);
+            });
+            //this sets the female dress for day1 according to
+            //weather info received from the server
+            requirejs(["helpers/days-logic/set-female-dress-day4"], function (weather_info) {
+                setFemaleDressDay4(weatherInfo[3]);
+            });
+            
+            //this sets the male dress for day5 according to
+            //weather info received from the server
+            //and sets the weather summary information for that particular day
+            requirejs(["helpers/days-logic/set-male-dress-day5"], function (weather_info) {
+                setMaleDressDay5(weatherInfo[4], weatherSummaryInfo[4]);
+            });
+            //this sets the female dress for day1 according to
+            //weather info received from the server
+            requirejs(["helpers/days-logic/set-female-dress-day5"], function (weather_info) {
+                setFemaleDressDay5(weatherInfo[4]);
+            });
+            
+            //this sets the male dress for day6 according to
+            //weather info received from the server
+            //and sets the weather summary information for that particular day
+            requirejs(["helpers/days-logic/set-male-dress-day6"], function (weather_info) {
+                setMaleDressDay6(weatherInfo[5], weatherSummaryInfo[5]);
+            });
+            //this sets the female dress for day1 according to
+            //weather info received from the server
+            requirejs(["helpers/days-logic/set-female-dress-day6"], function (weather_info) {
+                setFemaleDressDay6(weatherInfo[5]);
+            });
+            
+            //this sets the male dress for day7 according to
+            //weather info received from the server
+            //and sets the weather summary information for that particular day
+            requirejs(["helpers/days-logic/set-male-dress-day7"], function (weather_info) {
+                setMaleDressDay7(weatherInfo[6], weatherSummaryInfo[6]);
+            });
+            //this sets the female dress for day1 according to
+            //weather info received from the server
+            requirejs(["helpers/days-logic/set-female-dress-day7"], function (weather_info) {
+                setFemaleDressDay7(weatherInfo[6]);
             });
             
         },

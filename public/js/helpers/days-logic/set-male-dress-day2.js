@@ -1,4 +1,4 @@
-function setMaleDressDay1(weatherSummary, summaryInfo) {
+function setMaleDressDay2(weatherSummary, summaryInfo) {
     if (weatherSummary) {
         let male_dress_img = document.createElement('img');
 
@@ -73,15 +73,14 @@ function setMaleDressDay1(weatherSummary, summaryInfo) {
         break;
     }
     male_dress_img.className = 'mx-auto';
-    document.querySelector("#male-dress-day1").appendChild(male_dress_img);
-    
-    //for summary information gotten from server
-    document.querySelector('#summary-info-day1').innerHTML = summaryInfo;
+    document.querySelector("#male-dress-day2").appendChild(male_dress_img);    
 
-} else {
-    //remove male dress div so that nothing will display since
-    //no data was received from the server
-    document.querySelector("#male-dress-day1").setAttribute('style', 'display:none');
-    document.querySelector('#summary-info-day1').setAttribute('style', 'display:none');
-    }
+    //for summary information gotten from server
+    document.querySelector('#summary-info-day2').innerHTML = summaryInfo;
+    } else {
+        //remove male dress div so that nothing will display since
+        //no data was received from the server
+        document.querySelector("#male-dress-day2").setAttribute('style', 'display:none');   
+        document.querySelector('#summary-info-day2').setAttribute('style', 'display:none');
+    }   
 }
